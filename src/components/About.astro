@@ -1,11 +1,13 @@
 <section class="grid grid-cols-9 pt-28">
     <div class="grid grid-cols-9 col-start-3 col-end-8 py-8">
         <img class="rounded-lg w-80 h-80 object-cover row-start-1 col-start-1 col-end-4 xs:col-end-9" src="https://placehold.co/400" alt="wandev photo" />
-        <div class="xl:ml-5 p-5 font-bold leading-9 xs:col-start-1 2xl:col-start-4 xs:row-start-2 2xl:row-start-1 col-end-9">
+        <div class=" xl:ml-5 p-5 font-bold leading-9 xs:col-start-1 2xl:col-start-4 xs:row-start-2 2xl:row-start-1 col-end-9 xs:col-end-9">
             <h1 class="text-lg">Hola, mi nombre es</h1>
             <h1 class="text-orange-500 text-4xl mt-2">Juan Gil.</h1>
             <h2 class="text-3xl mt-2">Soy un <strong class="text-orange-500">Desarrollador FullStack!</strong></h2>
-            <button class="bg-orange-500 rounded-3xl px-3 py-1 my-4">Descargar CV</button>
+            <a href="/CVJuanGilSanchez.pdf" target="_blank">
+                <button class="bg-orange-500 rounded-3xl px-3 py-1 my-4">Descargar CV</button>
+            </a>
             <div class="py-2 flex flex-row text-white gap-x-5">
                 <a class="rounded-full" href="https://www.linkedin.com/in/juan-gil-s%C3%A1nchez-a1b8ba310/">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0,0,256,256">
@@ -57,32 +59,36 @@
                         >
                     </svg></a
                 >
-                <button id="emailButton"><img class="min-w-15" src="/email.svg" width="50" height="50" /></button>
 
-                <div id="emailContainer" class="hidden border-blue-500 p-4 mt-4 rounded-md shadow-md flex items-center space-x-2">
-                    <p id="email" class= "bg-slate-400 text-black p-2 py-1 rounded-xl">juaan26g@gmail.com</p>
-                    <button id="copyEmailButton" class=" bg-slate-400  p-1 rounded-xl object-cover"><img src="/copy.svg" width="50" height="50"></button>
+                <button id="emailButton"><img class="min-w-14" src="/email.svg" width="50" height="50" /></button>
+            </div>
+            <div class="flex flex-wrap ">
+                <div id="emailContainer" class="hidden border-blue-300 shadow-[#13151a] p-4 mt-4 rounded-md shadow-inner
+                 flex w-auto items-center space-x-2 w-full">
+                    <p id="email" class="bg-slate-400 text-black p-2 py-1 rounded-xl">juaan26g@gmail.com</p>
+                    <button id="copyEmailButton" class="bg-slate-400 p-1 rounded-xl object-cover min-w-10"><img src="/copy.svg" width="50" height="50" /></button>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <script>
-
-//Código para ocultar o mostrar el contenedor
-document.getElementById('emailButton').addEventListener('click', () => {
-    const emailContainer = document.getElementById('emailContainer');
-    emailContainer.classList.toggle('hidden');
-});
-
-//codigo para copiar en el clipboard
-document.getElementById('copyEmailButton').addEventListener('click', () => {
-    const email = document.getElementById('email').innerText;
-    navigator.clipboard.writeText(email).then(() => {
-      alert('Email copiado: ' + email);
-    }).catch(err => {
-      alert('Error al copiar el email');
+    //Código para ocultar o mostrar el contenedor
+    document.getElementById("emailButton").addEventListener("click", () => {
+        const emailContainer = document.getElementById("emailContainer");
+        emailContainer.classList.toggle("hidden");
     });
-});
 
+    //codigo para copiar en el clipboard
+    document.getElementById("copyEmailButton").addEventListener("click", () => {
+        const email = document.getElementById("email").innerText;
+        navigator.clipboard
+            .writeText(email)
+            .then(() => {
+                alert("Email copiado: " + email);
+            })
+            .catch((err) => {
+                alert("Error al copiar el email");
+            });
+    });
 </script>
