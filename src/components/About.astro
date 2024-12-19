@@ -73,22 +73,32 @@
   </div>
 </section>
 <script>
-  //Código para ocultar o mostrar el contenedor
+  // Código para ocultar o mostrar el contenedor
   document.getElementById("emailButton").addEventListener("click", () => {
     const emailContainer = document.getElementById("emailContainer");
     emailContainer.classList.toggle("hidden");
   });
 
-  //codigo para copiar en el clipboard
+  // Código para copiar en el portapapeles sin usar navigator.clipboard
   document.getElementById("copyEmailButton").addEventListener("click", () => {
     const email = document.getElementById("email").innerText;
-    navigator.clipboard
-      .writeText(email)
-      .then(() => {
-        alert("Email copiado: " + email);
-      })
-      .catch((err) => {
-        alert("Error al copiar el email");
-      });
+
+    // Crear un elemento de texto temporal
+    const tempInput = document.createElement("textarea");
+    tempInput.value = email;
+    document.body.appendChild(tempInput);
+
+    // Seleccionar el contenido del elemento de texto
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999); // Para dispositivos móviles
+
+    // Copiar el contenido al portapapeles
+    document.execCommand("copy");
+
+    // Eliminar el elemento de texto temporal
+    document.body.removeChild(tempInput);
+
+    // Mostrar una alerta de confirmación
+    alert("Email copiado: " + email);
   });
 </script>
