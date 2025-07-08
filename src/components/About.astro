@@ -80,26 +80,13 @@
     emailContainer.classList.toggle("hidden");
   });
 
-  // Código para copiar en el portapapeles sin usar navigator.clipboard
-  document.getElementById("copyEmailButton").addEventListener("click", () => {
+  document.getElementById("copyEmailButton").addEventListener("click", async () => {
     const email = document.getElementById("email").innerText;
-
-    // Crear un elemento de texto temporal
-    const tempInput = document.createElement("textarea");
-    tempInput.value = email;
-    document.body.appendChild(tempInput);
-
-    // Seleccionar el contenido del elemento de texto
-    tempInput.select();
-    tempInput.setSelectionRange(0, 99999); // Para dispositivos móviles
-
-    // Copiar el contenido al portapapeles
-    document.execCommand("copy");
-
-    // Eliminar el elemento de texto temporal
-    document.body.removeChild(tempInput);
-
-    // Mostrar una alerta de confirmación
-    alert("Email copiado: " + email);
+    try {
+      await navigator.clipboard.writeText(email);
+      alert("Email copiado: " + email);
+    } catch (err) {
+      console.error("Error al copiar el email: ", err);
+    }
   });
 </script>
